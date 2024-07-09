@@ -1,224 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const orders = [
-    {
-        'email': 'jayatekwani76@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Chicken Fried Rice',
-                    'price': 5.99,
-                },
-                {
-                    'title': 'Chicken Biryani',
-                    'price': 9.99,
-                }
-            ],
-            'total': 15.98
-        },
-        'address': '1234 Main St, Anytown, USA'
-    },
-    {
-        'email': 'testMail1@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Hot Dog',
-                    'price': 3.99,
-                },
-                {
-                    'title': 'Cheeseburger',
-                    'price': 5.99,
-                }
-            ],
-            'total': 9.98
-        },
-        'address': '5678 Elm St, Anytown, USA'
-    },
-    {
-        'email': 'example1@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Veggie Pizza',
-                    'price': 8.99,
-                },
-                {
-                    'title': 'Garlic Bread',
-                    'price': 4.99,
-                }
-            ],
-            'total': 13.98
-        },
-        'address': '4321 Oak St, Anytown, USA'
-    },
-    {
-        'email': 'example2@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Pasta Carbonara',
-                    'price': 11.99,
-                },
-                {
-                    'title': 'Caesar Salad',
-                    'price': 6.99,
-                }
-            ],
-            'total': 18.98
-        },
-        'address': '8765 Pine St, Anytown, USA'
-    },
-    {
-        'email': 'example3@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Sushi Roll',
-                    'price': 12.99,
-                },
-                {
-                    'title': 'Miso Soup',
-                    'price': 2.99,
-                }
-            ],
-            'total': 15.98
-        },
-        'address': '6789 Maple St, Anytown, USA'
-    },
-    {
-        'email': 'example4@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Beef Tacos',
-                    'price': 7.99,
-                },
-                {
-                    'title': 'Nachos',
-                    'price': 5.99,
-                }
-            ],
-            'total': 13.98
-        },
-        'address': '1357 Cedar St, Anytown, USA'
-    },
-    {
-        'email': 'example5@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Butter Chicken',
-                    'price': 10.99,
-                },
-                {
-                    'title': 'Naan Bread',
-                    'price': 2.99,
-                }
-            ],
-            'total': 13.98
-        },
-        'address': '2468 Birch St, Anytown, USA'
-    },
-    {
-        'email': 'example6@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Margherita Pizza',
-                    'price': 9.99,
-                },
-                {
-                    'title': 'Tiramisu',
-                    'price': 4.99,
-                }
-            ],
-            'total': 14.98
-        },
-        'address': '9753 Walnut St, Anytown, USA'
-    },
-    {
-        'email': 'example7@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Grilled Cheese Sandwich',
-                    'price': 5.99,
-                },
-                {
-                    'title': 'Tomato Soup',
-                    'price': 3.99,
-                }
-            ],
-            'total': 9.98
-        },
-        'address': '8642 Spruce St, Anytown, USA'
-    },
-    {
-        'email': 'example8@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Chicken Wings',
-                    'price': 8.99,
-                },
-                {
-                    'title': 'French Fries',
-                    'price': 2.99,
-                }
-            ],
-            'total': 11.98
-        },
-        'address': '7531 Fir St, Anytown, USA'
-    },
-    {
-        'email': 'example9@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Pancakes',
-                    'price': 6.99,
-                },
-                {
-                    'title': 'Bacon',
-                    'price': 3.99,
-                }
-            ],
-            'total': 10.98
-        },
-        'address': '1593 Cherry St, Anytown, USA'
-    },
-    {
-        'email': 'example10@gmail.com',
-        'order': {
-            'items': [
-                {
-                    'title': 'Fish and Chips',
-                    'price': 12.99,
-                },
-                {
-                    'title': 'Coleslaw',
-                    'price': 2.99,
-                }
-            ],
-            'total': 15.98
-        },
-        'address': '2614 Maple St, Anytown, USA'
-    },
-]
-
-
-
 const AdminOrders = ({setIsAdmin}) => {
+    
+    const [orders,setOrders] = useState([]);
+    
+    const getAllOrders = async () => {
+    
+        try {
+            const response = await axios.post('http://localhost:8787/api/Order/GetOrders', {});
+            setOrders(response.data)
+        } catch (error) {
+            console.error('Error making GET request:', error);
+        }
+    }
+    
+    getAllOrders();
 
-    const handleComplete = () => {
-        console.log('Order fulfilled');
+    const handleComplete = async (_id) => {
+        try {
+            const response = await axios.post('http://localhost:8787/api/Order/deleteOrder',{"id": _id})
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    const handleCancel = () => {
-        console.log('Order cancelled');
+    const handleCancel = async (_id) => {
+        try {
+            const response = await axios.post('http://localhost:8787/api/Order/deleteOrder',{"id": _id})
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const navigate = useNavigate();
@@ -245,47 +60,50 @@ const AdminOrders = ({setIsAdmin}) => {
     };
 
     useEffect(() => {
-        checkAdminStatus();
+        //check admin redirect to login page after 10 seconds for some reason
+        // checkAdminStatus();
         setIsAdmin(true);
     })
   return (
     <>
     <div className='text-white'>
-        <div className='overflow-x-auto'>
-            <table className='min-w-full'>
-                <thead>
-                    <tr>
-                        <th className='pr-5'>Email</th>
-                        <th className='pr-5'>Order</th>
-                        <th className='pr-5'>Address</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order, index) => (
+    <div className='overflow-x-auto'>
+        <table className='min-w-full'>
+            <thead>
+                <tr>
+                    <th className='pr-5'>User Id</th>
+                    <th className='pr-5'>Order</th>
+                    <th className='pr-5'>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {orders.map((order, index) => (
+                    <>
                         <tr key={index}>
-                            <td className='pr-5'>{order.email}</td>
+                            <td className='pr-5'>{order.userId}</td>
                             <td className='pr-5'>
                                 <ul>
-                                    {order.order.items.map((item, index) => (
+                                    {order.orderItems.map((item, index) => (
                                         <li key={index}>
-                                            {item.title} - ${item.price}
+                                            {item.title} - INR {item.price}
                                         </li>
                                     ))}
                                 </ul>
-                                <p>Total: ${order.order.total}</p>
                             </td>
                             <td className='pr-5'>{order.address}</td>
                             <td>
                                 <button onClick={() => handleComplete()} className='bg-green-500 rounded-lg p-4 mr-4'>Fulfilled</button>
-                                <button onClick={() => handleCancel()} className='bg-red-500 rounded-lg p-4'>X</button>
+                                <button onClick={() => handleCancel(order._id)} className='bg-red-500 rounded-lg p-4'>X</button>
                             </td>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                        {index < orders.length - 1 && <tr><td colSpan="4"><hr /></td></tr>}
+                    </>
+                ))}
+            </tbody>
+        </table>
     </div>
+</div>
 </>
   )
 }

@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const CartPage = ({ cartItems }) => {
+
+  const Navigate = useNavigate();
+
   const [cart, setCart] = useState(cartItems);
   const [address,setAddress] = useState('');
+  const [userID, setUserID] = useState('');
 
   useEffect(() => {
     setCart(cartItems);
@@ -16,15 +21,32 @@ const CartPage = ({ cartItems }) => {
     localStorage.setItem('cartItems', JSON.stringify(newCart));
   };
 
+  const getUser = () => {
+    axios.post('http://localhost:8787/api/findUserByToken', { "userToken": localStorage.getItem('token') })
+      .then((res) => {
+        setUserID(res.data.user._id);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+  getUser();
+
   const handleCartSubmit = () => {
     const data = {
-      orderItems,
-      address,
-      userID
+      "userId": userID,
+      "orderItems": cart,
+      "address": address
     }
     axios.post('http://localhost:8787/api/Order/AddOrder', data)
       .then((res) => {
         console.log(res.data);
+        if(res.data.message === 'Order placed successfully'){
+          alert('Order placed successfully');
+          localStorage.setItem('cartItems', JSON.stringify([]));
+          setCart([]);
+          Navigate('/Home')
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -92,7 +114,7 @@ const CartPage = ({ cartItems }) => {
             setAddress(e.target.value);
           }}
         />
-        <button onClick={() => (handleCartSubmit)}/>
+        <button onClick={() => (handleCartSubmit())} className="bg-green-500 p-2 mt-4 rounded-md">Place order</button>
       </center>
     </>
   );
