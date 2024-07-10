@@ -56,7 +56,7 @@ We welcome contributions to our project. If you have suggestions to improve it, 
 
 ## License 📝
 
-This project is licensed under the GNU License (cannot be used for commercial purposes)- see the LICENSE file for details.
+This project is licensed under the Non-Commercial License (cannot be used for commercial purposes, should not be used without permission) - see the LICENSE file for details.
 
 ## Acknowledgments 🎉
 
