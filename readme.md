@@ -41,14 +41,19 @@ Our project is built with a robust stack of technologies designed to offer a sea
 - **Vite** ⚡: A modern frontend build tool that significantly improves our development experience.
 - **ESLint** 🔍: A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, helping us to write cleaner code.
 
+## Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+
 ## Getting Started 🚀
 
 To get a local copy up and running, follow these simple steps.
 
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
-3. Install the dependencies.
-4. Start the development server.
+3. Install the dependencies using "npm i"
+4. update the dotenv files with your preffered port, jwt secret and mongoDB connection string
+5. Start the development server by openiing two terminals in client and server and running the command "npm run dev"
 
 ## Contributing 🤝
 
