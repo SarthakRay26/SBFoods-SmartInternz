@@ -43,7 +43,7 @@ Our project is built with a robust stack of technologies designed to offer a sea
 
 ## Prerequisites
 
-Make sure you have Node.js and npm installed on your machine.
+Make sure you have Node.js and npm installed on your machine. And the foodItems should be uploaded on your mongoDB collections
 
 ## Getting Started 🚀
 
