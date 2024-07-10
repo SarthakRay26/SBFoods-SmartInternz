@@ -6,6 +6,28 @@ Welcome to our project! This README provides an overview of the tools and techno
 
 https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/f96c74d5-0605-431e-ac6b-dcae3c0c1854
 
+# Sample images
+
+### Home page
+
+![image](https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/2bc74480-87af-4d0b-ab26-b2d758fe82a4)
+
+### Delivery Page
+
+![image](https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/72d8bbf6-571d-45d9-93dd-1014f98fc95c)
+
+### Cart Page
+
+![image](https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/71c9d031-3bc7-437a-b25c-7d2dfb7c99f4)
+
+### Admin Edit Page
+
+![image](https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/20f98533-6e35-41ba-9e25-355f430e4a31)
+
+### Admin Orders Page
+
+![image](https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/89b8d1ab-6165-4547-beb0-c3a0f9540cca)
+
 ## Technologies Used 🛠️
 
 Our project is built with a robust stack of technologies designed to offer a seamless and efficient user experience. Here's a breakdown of the tools we've employed:
