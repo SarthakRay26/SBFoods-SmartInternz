@@ -1,8 +1,10 @@
-# This project is still under construction
-
 # Project Name
 
 Welcome to our project! This README provides an overview of the tools and technologies we've utilized to bring our project to life. We're excited to share our work with you. 🚀
+
+# Video Demo
+
+https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/f96c74d5-0605-431e-ac6b-dcae3c0c1854
 
 ## Technologies Used 🛠️
 
