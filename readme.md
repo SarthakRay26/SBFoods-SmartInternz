@@ -12,6 +12,7 @@ https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/f96c74d5-0
 
 ![image](https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/2bc74480-87af-4d0b-ab26-b2d758fe82a4)
 
+
 ### Delivery Page
 
 ![image](https://github.com/SarthakRay26/SBFoods-SmartInternz/assets/148947359/72d8bbf6-571d-45d9-93dd-1014f98fc95c)
@@ -65,8 +66,8 @@ This project is licensed under the Non-Commercial License (cannot be used for co
 
 ## Acknowledgments 🎉
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+-  Hat tip to anyone whose code was used.
+-  Inspiration.
+-  etc.
 
 Thank you for checking out our project! We hope you find it useful and look forward to your contributions and feedback. 🌟
