@@ -1,0 +1,19 @@
+services:
+
+  - type: web
+
+    name: smartfoods-backend
+
+    env: node
+
+    plan: free
+
+    buildCommand: cd server && npm install
+
+    startCommand: cd server && npm start
+
+    envVars:
+
+      - key: NODE_VERSION
+
+        value: 18
